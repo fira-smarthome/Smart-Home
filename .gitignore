@@ -1,0 +1,5 @@
+**/.DS_Store
+**/__pycache__/
+**/*.wbproj
+**/.idea
+game/controllers/robotCode/robotCode.py

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="module" src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="faicon.ico" sizes="32x32">
+    <title>Bot Window</title>
+</head>
+<body>
+<div class="bot-window">
+    <header class="header">
+        <img class="fira" alt="Fira" src="img/fira.png">
+        <div class="text-wrapper">Robotic Vacuum Simulator 2023</div>
+    </header>
+    <div class="code">
+        <!-- Load button to trigger file input -->
+        <div class="load-button" id="load" onclick="openLoadController()">
+            <div class="overlap-group">
+                <div class="load">Load</div>
+            </div>
+            <!-- Hidden file input for selecting files -->
+        </div>
+        <div class="load-button" id="unload" style="display: none" onclick="unloadPressed()">
+            <div class="overlap-group">
+                <div class="load">UnLoad</div>
+            </div>
+            <!-- Hidden file input for selecting files -->
+        </div>
+        <input type="file" style="display: none;" accept=".py"
+               onchange="fileOpened('robotCode', '[\'py\', \'exe\', \'class\', \'jar\', \'bsg\', \'m\']', 'controllers/robotCode')"
+               id="robotCode">
+        <!-- Placeholder for code image -->
+        <img class="img" alt="Code" src="img/code.png">
+    </div>
+    <div class="battery-score-time">
+        <!-- Battery, score, and time content -->
+        <div class="battery">
+            <img class="battery-2" alt="Battery" src="img/battery-1.png">
+            <div id="charge" class="text-wrapper-3">100%</div>
+        </div>
+        <div class="score">
+            <img class="vacuum-cleaner" alt="Vacuum cleaner" src="img/vacuum-cleaner.png">
+            <div class="text-wrapper-2">520</div>
+        </div>
+        <div class="time">
+            <img class="timer" alt="Timer" src="img/timer.png">
+            <div class="div" id="timer">00:00</div>
+        </div>
+    </div>
+    <div class="log">
+        <!-- Log content here -->
+        <div class="overlap">
+            <p class="p" id="log002">logs</p>
+        </div>
+    </div>
+    <div class="player">
+        <!-- Play, Pause, Stop, and Reset buttons -->
+        <button id="runButton" class="play" onclick="runPressed()" disabled>
+            <img class="play-2" alt="Play" src="img/play.png">
+        </button>
+        <button id="pauseButton" class="pause" onclick="pausePressed()" disabled>
+            <img class="pause-2" alt="Pause" src="img/pause.png">
+        </button>
+        <button id="giveup" class="stop" onclick="giveupPressed()" disabled>
+            <img class="pause-2" alt="Pause" src="img/stop.png">
+        </button>
+        <button id="lopButton" class="reset" onclick="relocate()" disabled>
+            <img class="img-2" alt="Reset" src="img/reset.png">
+        </button>
+    </div>
+</div>
+
+</body>
+</html>

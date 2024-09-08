@@ -13,17 +13,18 @@ __all__ = ["SimpleHTTPRequestHandler"]
 __author__ = "bones7456"
 __home_page__ = "http://li2z.cn/"
 
+import glob
+import html
+import http.server
+import mimetypes
 import os
 import posixpath
-import http.server
-import urllib.request, urllib.parse, urllib.error
-import html
-import shutil
-import mimetypes
 import re
+import shutil
+import urllib.error
+import urllib.parse
+import urllib.request
 from io import BytesIO
-import glob
-import stat
 
 
 class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
@@ -64,7 +65,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
         if r:
             self.send_response(200)
         else:
-            self.send_response(500)
+            self.send_error(400, explain=info)
 
         self.send_header("Content-type", "text/plain")
         self.send_header('Access-Control-Allow-Origin', '*')
@@ -78,17 +79,21 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
         uploaded_files = []
         content_type = self.headers['content-type']
         if not content_type:
-            return (False, "Content-Type header doesn't contain boundary")
+            return False, "Content-Type header doesn't contain boundary"
         boundary = content_type.split("=")[1].encode()
         remainbytes = int(self.headers['content-length'])
         line = self.rfile.readline()
         remainbytes -= len(line)
         if not boundary in line:
-            return (False, "Content NOT begin with boundary")
+            return False, "Content NOT begin with boundary"
         ##Clear Destination Directory
         path = self.translate_path(self.path)
         for file in glob.glob(os.path.join(path, os.path.basename(path)) + '*'):
-            os.remove(file)
+            print(file)
+            try:
+                os.remove(file)
+            except:
+                return False, f"Please delete this file first: {file}"
 
         while remainbytes > 0:
             line = self.rfile.readline()
@@ -96,8 +101,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
 
             fn = re.findall(r'Content-Disposition.*name="file.*"; filename="(.*)"', line.decode())
             if not fn:
-                return (False, line.decode())
-                # return (False, "Can't find out file name...")
+                return False, line.decode()
             fn = os.path.join(path, fn[0])
             line = self.rfile.readline()
             remainbytes -= len(line)
@@ -106,7 +110,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             try:
                 out = open(fn, 'wb')
             except IOError:
-                return (False, "Can't create file to write, do you have permission to write?")
+                return False, "Can't create file to write, do you have permission to write?"
             else:
                 with out:
                     preline = self.rfile.readline()
@@ -125,15 +129,15 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
                             out.write(preline)
                             preline = line
         if len(uploaded_files) == 0:
-            return (False, "No file selected.")
+            return False, "No file selected."
         if len(uploaded_files) == 1:
             newpath = os.path.join(os.path.dirname(uploaded_files[0]),
                                    os.path.basename(os.path.dirname(uploaded_files[0])) +
                                    os.path.splitext(uploaded_files[0])[1])
             os.rename(uploaded_files[0], newpath)
             os.chmod(newpath, 777)
-            return (True, "OK")
-        return (False, "Built-in compilation is not supported at this time. Select only one file to be executed.")
+            return True, "OK"
+        return False, "Built-in compilation is not supported at this time. Select only one file to be executed."
 
     def send_head(self):
         """Common code for GET and HEAD commands.

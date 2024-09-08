@@ -21196,5 +21196,5 @@ DEF MAINSUPERVISOR Robot {
   controller "VaccumCleanerSupervisor"
   customData "480"
   supervisor TRUE
-  window "VaccumCleanerWindow"
+  window "SmarthomeWindow"
 }

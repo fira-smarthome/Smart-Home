@@ -2,7 +2,6 @@
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/50c3f419b5da49a2af606297049ee91e8adbc92e/projects/objects/apartment_structure/protos/Wall.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/50c3f419b5da49a2af606297049ee91e8adbc92e/projects/appearances/protos/CorrodedMetal.proto"
-EXTERNPROTO "curvedWall.proto"
 
 PROTO worldTile [
       field SFInt32 xPos 0
@@ -419,15 +418,6 @@ PROTO worldTile [
 								}
 							  ]
 							}
-				%{end}%
-				%{if fields.curveDir.value > 0 then}%
-					curvedWall {
-						rot %{= fields.curveDir.value}%
-						isHalf %{= fields.isHalf.value and "TRUE" or "FALSE"}%
-						xScale %{=scaleX}%
-						yScale %{=scaleY}%
-						zScale %{=scaleZ}%
-					}
 				%{end}%
 				%{if fields.obstacle.value == true then}%
 					%{

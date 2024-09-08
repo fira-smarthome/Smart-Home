@@ -1,13 +1,14 @@
 import sys
-
-import CodeUploader
-from controller import Supervisor
 import threading
 import time
-from TilesController import *
-from RobotManager import *
+import struct
 
+from controller import Supervisor
+
+import CodeUploader
 from FiraWindowSender import FiraWindowSender
+from RobotManager import *
+from TilesController import *
 
 TIME_STEP = 16
 
@@ -36,6 +37,8 @@ class FiraSupervisor(Supervisor):
         uploader.start()
 
         self.c_supervisor = self.getFromDef("VACCUMSUPERVISOR")
+        if self.c_supervisor is None:
+            self.c_supervisor = self.getFromDef("MAINSUPERVISOR")
         self.ws = FiraWindowSender(self)
         self.ws.send("startup")
 
@@ -67,6 +70,7 @@ class FiraSupervisor(Supervisor):
         self.ws.send("update", str(0) + "," + str(0) + "," + str(self.max_time) + "," + str(0) + "," + str(100))
 
         self.receiver = self.getDevice('receiver')
+        self.receiver.setChannel(1)
         self.receiver.enable(TIME_STEP)
 
         self.emitter = self.getDevice('emitter')
@@ -88,6 +92,10 @@ class FiraSupervisor(Supervisor):
         self.robot = self.getFromDef("ROBOT")
         if self.robot is None:
             self.robot = self.add_robot()
+
+        custom_data_field = self.robot.getField("customData")
+        robot_name = custom_data_field.getSFString()
+        print(robot_name)
 
         self.robot_instance.add_node(self.robot)
 
@@ -237,6 +245,8 @@ class FiraSupervisor(Supervisor):
                 self.ws.update_history("unloadControllerPressed")
 
     def update(self):
+        if self.game_state == FINISHED:
+            return
         if self.is_last_frame and self.game_state != FINISHED:
             self.robot_instance.set_max_velocity(0)
             self.is_last_frame = -1
@@ -250,13 +260,10 @@ class FiraSupervisor(Supervisor):
             self.robot_instance.update_elapsed_time(self.elapsed_time)
 
             if self.receiver.getQueueLength() > 0:
-                received_data = self.receiver.getBytes()
-                self.robot_instance.set_message(received_data)
+                received_data = self.receiver.getString()
+                if len(received_data) > 0:
+                    self.robot_instance.set_name(received_data, self)
                 self.receiver.nextPacket()
-
-                if self.robot_instance.message:
-                    message = self.robot_instance.message
-                    # Write a function to process the message
 
             if self.game_state == RUNNING:
                 if self.robot_instance.time_stopped(self) >= 10:
@@ -307,6 +314,8 @@ class FiraSupervisor(Supervisor):
 
             if self.last_sent_score != now_score or self.last_sent_time != int(
                     self.elapsed_time) or self.last_sent_real_time != int(self.real_elapsed_time):
+                # print(self.robot_instance.robot_node is Robot)
+
                 self.ws.send("update", str(round(now_score, 2)) + "," + str(int(self.elapsed_time)) + "," + str(
                     self.max_time) + "," + str(int(self.real_elapsed_time)) + "," + str(
                     int(self.robot_instance.get_charge())))

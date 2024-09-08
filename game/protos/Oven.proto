@@ -22,7 +22,7 @@ PROTO Oven [
   Solid {
     translation IS translation
     rotation IS rotation
-    scale 0.17 0.15 0.15
+    scale 0.15 0.15 0.15
     children [
       Transform {
         scale %<= scale_oven[0] >% %<= scale_oven[1] >% %<= scale_oven[2] >%

@@ -21109,20 +21109,20 @@ DEF Home Group {
           numberOfFins 25
         }
         Cabinet {
-          hidden position_6_0 -7.861749803042614e-07
-          hidden translation_7 0.0004893469307248982 -8.022124986517554e-08 0
-          hidden rotation_7 0 0 -1 0.000327870645280684
-          hidden position_10_0 8.873146077077723e-08
-          hidden translation_11 6.258638740323145e-06 1.157867968171189e-10 0
-          hidden rotation_11 0 0 1 3.7000528433297274e-05
-          hidden position_14_0 3.551012211529048e-06
-          hidden translation_15 0.08185787691981006 0 0
-          hidden position_22_0 3.5510122115290486e-06
-          hidden translation_23 0.0818578769198101 0 0
-          hidden position_30_0 3.5510122115290486e-06
-          hidden translation_31 0.08185787691980999 0 0
-          hidden position_38_0 6.9829076952020785e-06
-          hidden translation_39 0.0832889773364973 0 0
+          hidden position_6_0 -1.572349549188901e-06
+          hidden translation_7 0.0004905202962057391 -8.060642375795624e-08 0
+          hidden rotation_7 0 0 -1 0.0003286568214352951
+          hidden position_10_0 1.7746292726690604e-07
+          hidden translation_11 6.273647667870667e-06 1.1634276875227556e-10 0
+          hidden rotation_11 0 0 1 3.7089250637183496e-05
+          hidden position_14_0 7.102024423058096e-06
+          hidden translation_15 0.08186142793202159 0 0
+          hidden position_22_0 7.102024423058097e-06
+          hidden translation_23 0.08186142793202163 0 0
+          hidden position_30_0 7.102024423058097e-06
+          hidden translation_31 0.08186142793202152 0 0
+          hidden position_38_0 1.3965815390404157e-05
+          hidden translation_39 0.0832959602441925 0 0
           translation 0.663128 -0.01 -0.0630122
           rotation 0.577349935856137 0.577349935856137 0.5773509358560258 -2.094395307179586
           columnsWidths [
@@ -21143,30 +21143,34 @@ DEF Home Group {
     DEF Kitchen Group {
       children [
         Fridge {
-          hidden position_0_0 3.331086521809475e-06
-          hidden position_0_1 3.3374484477901785e-06
-          hidden rotation_1 0 0 1 0.001811875343661046
-          hidden rotation_2 0 0 1 0.004434268779185332
+          hidden position_0_0 6.6621804621716826e-06
+          hidden position_0_1 6.674904300030474e-06
+          hidden rotation_1 0 0 0.9999999999999999 0.0018152064376366344
+          hidden rotation_2 0 0 1 0.0044376062349339536
           translation -0.0106302 7.65139e-08 0.631415
           rotation 0.577349935856137 0.577349935856137 0.5773509358560258 -2.094395307179586
         }
         Oven {
-          hidden position_0_0 1.5000000486073901
-          hidden translation_1 0.20353685765910373 0 0.14012525049787986
-          hidden rotation_1 0 1 0 1.50000004860739
+          hidden position_0_0 1.5005664471046354
+          hidden translation_1 0.20350860811012086 0 0.14012325522721447
+          hidden rotation_1 0 1 0 1.5005664471046354
+          hidden linearVelocity_1 -4.31683640700088e-05 0.0004883064664779418 -3.887969669873001e-10
+          hidden angularVelocity_1 -1.9528932436479235e-07 -1.0065336562398696e-08 0.00823932473001845
           translation -0.0172594 3.41949e-14 1.227
           rotation 1 0 0 -1.5707953071795862
           name "oven(1)"
         }
         Oven {
-          hidden position_0_0 -2.6496023108620574e-37
+              hidden position_0_0 -6.500994578940129e-37
           translation -0.0183094 1.82077e-14 1.30007
           rotation 1 0 0 -1.5707953071795862
         }
         Oven {
-          hidden position_0_0 1.500000040011198
-          hidden translation_1 0.20353685808783673 0 0.1401252505282833
-          hidden rotation_1 0 1 0 1.5000000400111977
+          hidden position_0_0 1.5005682275273173
+          hidden translation_1 0.2035085193084277 0 0.14012324898048803
+          hidden rotation_1 0 1 0 1.5005682275273173
+          hidden linearVelocity_1 -4.35760277867608e-05 0.0004903061390048068 -1.3281992265779362e-10
+          hidden angularVelocity_1 -1.9443677216257982e-07 -9.933176818612515e-09 0.008265540732014322
           translation -0.0168835 -1.24345e-14 1.16341
           rotation 1 0 0 -1.5707953071795862
           name "oven(2)"
@@ -21196,5 +21200,5 @@ DEF MAINSUPERVISOR Robot {
   controller "VaccumCleanerSupervisor"
   customData "480"
   supervisor TRUE
-  window "VaccumCleanerWindow"
+  window "SmarthomeWindow"
 }

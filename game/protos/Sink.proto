@@ -13,7 +13,7 @@ PROTO Sink [
   Solid {
     translation IS translation
     rotation IS rotation
-    scale 0.20 0.20 0.15
+    scale 0.15 0.15 0.15
     children [
       Shape {
         appearance PBRAppearance {

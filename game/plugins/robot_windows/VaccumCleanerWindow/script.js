@@ -90,11 +90,6 @@ window.fileOpened = function (filesId, acceptTypes, location) {
     }
 }
 
-window.runPressed = function () {
-    preRun();
-    window.robotWindow.send("run");
-}
-
 window.pausePressed = function () {
     //When the pause button is pressed
     //Turn off pause button, on run button and send signal to pause
@@ -165,20 +160,24 @@ window.endGame = function () {
     setEnableButton('lopButton', false)
 }
 
-window.updateHistory = function (history0) {
-    let html = "<div class='log-row'>";
-    if (history0[0].indexOf(":") !== -1) {
-        if (history0[1].indexOf("+") !== -1) {
-            html += `<span style='font-size:18px;color:#2980b9; flex: auto; text-align: center;'>${history0[0]}</span><span style='font-size:18px;color:#2980b9; flex: auto; text-align: center;;'>${history0[1]}</span>`;
-        } else if (history0[1].indexOf("-") !== -1) {
-            html += `<span style='font-size:18px;color:#c0392b; flex: auto; text-align: center;'>${history0[0]}</span><span style='font-size:18px;color:#c0392b; flex: auto; text-align: center;'>${history0[1]}</span>`;
-        } else {
-            html += `<span style='font-size:18px;color:#2c3e50; flex: auto; text-align: center;'>${history0[0]}</span><span style='font-size:18px;color:#2c3e50; flex: auto; text-align: center;'>${history0[1]}</span>`;
-        }
-    }
-    html += "</div>";
-    historyHtml = html + historyHtml;
-    document.getElementById("log002").innerHTML = historyHtml;
+// let updateHistory = function (history0) {
+//     let html = "<div class='log-row'>";
+//     if (history0[0].indexOf(":") !== -1) {
+//         if (history0[1].indexOf("+") !== -1) {
+//             html += `<span style='font-size:18px;color:#2980b9; flex: auto; text-align: center;'>${history0[0]}</span><span style='font-size:18px;color:#2980b9; flex: auto; text-align: center;;'>${history0[1]}</span>`;
+//         } else if (history0[1].indexOf("-") !== -1) {
+//             html += `<span style='font-size:18px;color:#c0392b; flex: auto; text-align: center;'>${history0[0]}</span><span style='font-size:18px;color:#c0392b; flex: auto; text-align: center;'>${history0[1]}</span>`;
+//         } else {
+//             html += `<span style='font-size:18px;color:#2c3e50; flex: auto; text-align: center;'>${history0[0]}</span><span style='font-size:18px;color:#2c3e50; flex: auto; text-align: center;'>${history0[1]}</span>`;
+//         }
+//     }
+//     html += "</div>";
+//     historyHtml = html + historyHtml;
+//     document.getElementById("log002").innerHTML = historyHtml;
+// }
+
+window.setTeamName = function (name) {
+    document.getElementById("team_name").innerHTML = name;
 }
 
 window.openLoadController = function () {
@@ -244,7 +243,6 @@ window.receive = function (message) {
     //Receive message from the python supervisor
     //Split on comma
     var parts = message.split(",");
-    console.log(parts);
 
     //If there is a message
     if (parts.length > 0) {
@@ -274,7 +272,12 @@ window.receive = function (message) {
                 break;
             case "historyUpdate":
                 let history0 = message.split(",").slice(1, message.length - 1)
-                updateHistory(history0)
+                // updateHistory(history0)
+                // console.log(history0)
+                break;
+            case "setName":
+                let name = message.split(",").slice(1, message.length - 1)
+                setTeamName(name);
                 break;
             case "loadControllerPressed":
                 openLoadController();

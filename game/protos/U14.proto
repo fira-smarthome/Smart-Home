@@ -13,6 +13,7 @@ PROTO U14 [
     field SFVec3f            translation                  0 0 0                    # Is `Transform.translation`.
     field SFRotation         rotation                     0 1 0 0                  # Is `Transform.rotation`.
     field SFString           name                         "Vacuum"                 # Is `Solid.name`.
+    field SFString           team_name                    ""
     field SFInt32            emitter_channel              1
     field SFInt32            receiver_channel             1
     field SFString           controller                   ""
@@ -27,7 +28,6 @@ PROTO U14 [
     field SFRotation         camera_rotation              1 0 0 0
     field SFFloat            camera_noise                 0.0
     field SFFloat            camera_motionBlur            0.0
-
 ]
 {
 Robot {

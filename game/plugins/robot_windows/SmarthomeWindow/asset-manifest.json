@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/robot_windows/SmarthomeWindow/static/js/main.7ef81f16.js",
+    "index.html": "/robot_windows/SmarthomeWindow/index.html",
+    "main.7ef81f16.js.map": "/robot_windows/SmarthomeWindow/static/js/main.7ef81f16.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.7ef81f16.js"
+  ]
+}

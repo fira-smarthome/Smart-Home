@@ -1,7 +1,8 @@
 import datetime
-import struct
-from RobotCode import Code
+
 import numpy as np
+
+from RobotCode import Code
 
 
 class RobotHistory:
@@ -40,6 +41,8 @@ class RobotManager:
         self._score = 0
         self._charge = 100.0
 
+        self.name = ""
+
         self.robot_stopped_time = 0
         self.stopped = False
         self.stopped_time = None
@@ -50,8 +53,6 @@ class RobotManager:
         self.start_tile = None
 
         self.is_in_simulation = False
-
-        self.name = "NO_TEAM_NAME"
 
         self.left_exit_tile = False
 
@@ -129,6 +130,10 @@ class RobotManager:
         if self._charge < 0:
             self._charge = 0
 
+    def set_name(self, name: str, supervisor) -> None:
+        self.name = name
+        supervisor.ws.send("setName", name)
+
     def set_charge(self, charge: float) -> None:
         self._charge = charge
         if self._charge < 0:
@@ -153,15 +158,6 @@ class RobotManager:
                 break
 
         self.rotation = [0, 1, 0, direction]
-
-    def set_message(self, received_data):
-        data_length = len(received_data)
-        try:
-            if data_length == 1:
-                tup = struct.unpack('c', received_data)
-                self.message = [tup[0].decode("utf-8")]
-        except Exception as e:
-            print(e)
 
     def update_elapsed_time(self, timeElapsed: int):
         self.time_elapsed = timeElapsed

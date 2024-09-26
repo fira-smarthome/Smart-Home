@@ -1,7 +1,6 @@
 import sys
 import threading
 import time
-import struct
 
 from controller import Supervisor
 
@@ -74,6 +73,7 @@ class FiraSupervisor(Supervisor):
         self.receiver.enable(TIME_STEP)
 
         self.emitter = self.getDevice('emitter')
+        self.emitter.setChannel(1)
 
         self.robot_instance = RobotManager()
         self.robot_instance.code.reset_file(self)
@@ -141,7 +141,7 @@ class FiraSupervisor(Supervisor):
 
         self.robot_instance.robot_node.resetPhysics()
 
-        self.emitter.send(struct.pack("c", bytes("L", "utf-8")))
+        # self.emitter.send(struct.pack("c", bytes("L", "utf-8")))
 
         if decrease_score:
             self.robot_instance.increase_score("Lack of Progress", -5, self)
@@ -247,6 +247,9 @@ class FiraSupervisor(Supervisor):
     def update(self):
         if self.game_state == FINISHED:
             return
+
+        self.emitter.send(str(self.robot_instance.get_charge()).encode('utf-8'))
+
         if self.is_last_frame and self.game_state != FINISHED:
             self.robot_instance.set_max_velocity(0)
             self.is_last_frame = -1

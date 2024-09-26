@@ -23,7 +23,7 @@ IMPORTABLE EXTERNPROTO "../protos/U14.proto"
 IMPORTABLE EXTERNPROTO "../protos/U19.proto"
 
 WorldInfo {
-  basicTimeStep 32
+  basicTimeStep 16
   coordinateSystem "NUE"
   contactProperties [
     ContactProperties {

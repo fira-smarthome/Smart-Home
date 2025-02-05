@@ -106,7 +106,7 @@ def readSensors():
 def debug():
     return
     global Compass, PositionX, PositionY, FrontLeft, FrontRight, RightFront, RightBack, BackLeft, BackRight, LeftBack, LeftFront, Battery
-    
+
     print()
     cprint("---------------------------------------", "cyan", )
     cprint("------------------ Debug --------------", "cyan", )
@@ -142,6 +142,8 @@ duration = 0
 while robot.step(timeStep) != -1:
     readSensors()
     debug()
+    move(0,0)
+    continue
 
     # Start Coding ...
 

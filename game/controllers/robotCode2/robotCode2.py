@@ -106,7 +106,7 @@ def readSensors():
 def debug():
     return
     global Compass, PositionX, PositionY, FrontLeft, FrontRight, RightFront, RightBack, BackLeft, BackRight, LeftBack, LeftFront, Battery
-    
+
     print()
     cprint("---------------------------------------", "cyan", )
     cprint("------------------ Debug --------------", "cyan", )

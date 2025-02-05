@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="module" src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="faicon.ico" sizes="32x32">
+    <title>Bot Window</title>
+</head>
+<body>
+<div class="bot-window">
+    <header class="header">
+        <img class="fira" alt="Fira" src="img/fira.png">
+        <div class="text-wrapper">Smart Home Super-Team 2024</div>
+    </header>
+    <div class="battery-score-time">
+        <div class="score">
+            <div class="text-wrapper-2" style="color: orangered">Red</div>
+            <div class="code">
+                <div class="load-button" id="load1" onclick="openLoadController(1)">
+                    <div class="overlap-group">
+                        <div class="load">Load1</div>
+                    </div>
+                </div>
+                <div class="load-button" id="unload1" style="display: none" onclick="unloadPressed(1)">
+                    <div class="overlap-group">
+                        <div class="load">UnLoad1</div>
+                    </div>
+                    <!-- Hidden file input for selecting files -->
+                </div>
+                <input type="file" style="display: none;" accept=".py"
+                       onchange="fileOpened('robotCode1', '[\'py\', \'exe\', \'class\', \'jar\', \'bsg\', \'m\']', 'controllers/robotCode1', 1)"
+                       id="robotCode1">
+                <!-- Placeholder for code image -->
+                <!-- <img class="img" alt="Code" src="img/code.png"> -->
+            </div>
+            <div class="text-wrapper-2" id="score1">0</div>
+        </div>
+        <div class="time">
+            <img class="timer" alt="Timer" src="img/timer.png">
+            <div class="div" id="timer">00:00</div>
+        </div>
+        <div class="score">
+            <div class="text-wrapper-2" style="color: deepskyblue">Blue</div>
+            <div class="code">
+                <div class="load-button" id="load2" onclick="openLoadController(2)">
+                    <div class="overlap-group">
+                        <div class="load">Load2</div>
+                    </div>
+                </div>
+                <div class="load-button" id="unload2" style="display: none" onclick="unloadPressed(2)">
+                    <div class="overlap-group">
+                        <div class="load">UnLoad2</div>
+                    </div>
+                    <!-- Hidden file input for selecting files -->
+                </div>
+                <input type="file" style="display: none;" accept=".py"
+                       onchange="fileOpened('robotCode2', '[\'py\', \'exe\', \'class\', \'jar\', \'bsg\', \'m\']', 'controllers/robotCode2', 2)"
+                       id="robotCode2">
+                <!-- Placeholder for code image -->
+                <!-- <img class="img" alt="Code" src="img/code.png"> -->
+            </div>
+            <div class="text-wrapper-2" id="score2">0</div>
+        </div>
+    </div>
+    <div style="display: flex; width: 100%;">
+        <div class="player">
+            <button id="runButton" class="play" onclick="runPressed()" disabled>
+                <img class="play-2" alt="Play" src="img/play.png">
+            </button>
+        </div>
+        <div class="player">
+            <button id="lopButton" class="reset" onclick="relocate()">
+                <img class="img-2" alt="Reset" src="img/reset.png">
+            </button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

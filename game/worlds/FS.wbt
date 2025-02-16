@@ -10,7 +10,7 @@ EXTERNPROTO "../protos/ActualWall.proto"
 EXTERNPROTO "../protos/SmartHomeInfo.proto"
 
 WorldInfo {
-  coordinateSystem "NUE"
+  coordinateSystem "ENU"
 }
 Viewpoint {
   orientation -0.7071057814660382 0.7071077809056435 5.551115123136879e-17 3.1415966524690035
@@ -92,6 +92,7 @@ DEF Walls Group {
 }
 DEF Info SmartHomeInfo {
     verbose TRUE
+    charging_points_count 0
 }
 DEF MAINSUPERVISOR Robot {
   children [
@@ -102,7 +103,7 @@ DEF MAINSUPERVISOR Robot {
       channel 1
     }
   ]
-  controller "OptimizedVaccumCleanerSupervisor"
+  controller "FiraSmartHomeSupervisor"
   customData "480"
   supervisor TRUE
   window "SmarthomeWindow"

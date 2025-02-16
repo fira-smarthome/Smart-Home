@@ -12,31 +12,31 @@ PROTO SmartHomeInfo [
 
   unconnectedField SFInt32    rooms_count              4
   unconnectedField SFInt32    room1_count              4
-  unconnectedField MFVec2f    room1                    [-1.28 1.28
-                                                        -1.28 0.31
-                                                        -0.3 0.31
-                                                        -0.3 1.28]
+  unconnectedField MFVec2f    room1                    [-1.27 1.27
+                                                        -1.27 0.33
+                                                        -0.33 0.33
+                                                        -0.33 1.27]
   unconnectedField SFInt32    room2_count              4
-  unconnectedField MFVec2f    room2                    [-0.01 1.28
-                                                        -0.01 0.32
-                                                        1.27 0.32
-                                                        1.27 1.28]
+  unconnectedField MFVec2f    room2                    [0 1.27
+                                                        0 0.33
+                                                        1.27 0.33
+                                                        1.27 1.27]
   unconnectedField SFInt32    room3_count              4
-  unconnectedField MFVec2f    room3                    [0.31 -0.09
-                                                        0.31 -1.28
-                                                        1.28 -1.28
-                                                        1.28 -0.09]
+  unconnectedField MFVec2f    room3                    [0.32 -0.11
+                                                        0.32 -1.27
+                                                        1.27 -1.27
+                                                        1.27 -0.11]
   unconnectedField SFInt32    room4_count              10
-  unconnectedField MFVec2f    room4                    [-0.3 1.28
-                                                        -0.3 0.31
-                                                        -1.28 0.31
-                                                        -1.28 -1.28
-                                                        0.31 -1.28
-                                                        0.31 -0.09
-                                                        1.28 -0.09
-                                                        1.28 0.32
-                                                        -0.01 0.32
-                                                        -0.01 1.28]
+  unconnectedField MFVec2f    room4                    [-0.33 1.27
+                                                        -0.33 0.33
+                                                        -1.27 0.33
+                                                        -1.27 -1.27
+                                                        0.32 -1.27
+                                                        0.32 -0.11
+                                                        1.27 -0.11
+                                                        1.27 0.33
+                                                        0 0.33
+                                                        0 1.27]
   unconnectedField SFInt32    room5_count              4
   unconnectedField MFVec2f    room5                    [-1.28 1.28
                                                         -1.28 0.31

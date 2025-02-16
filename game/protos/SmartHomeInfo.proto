@@ -1,5 +1,6 @@
 #VRML_SIM R2023a utf8
 PROTO SmartHomeInfo [
+  unconnectedField SFBool     send_room_data           TRUE
   unconnectedField SFInt32    charging_points_count    2
   unconnectedField MFVec2f    charging_points          [1 0
                                                         1 -1.17]

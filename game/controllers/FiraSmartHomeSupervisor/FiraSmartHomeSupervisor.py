@@ -57,6 +57,8 @@ class FiraSupervisor(Supervisor):
 
         self.verbose = game_info.getField('verbose').getSFBool()
 
+        self.send_room_data = game_info.getField('send_room_data').getSFBool()
+
         rooms_count = game_info.getField('rooms_count').getSFInt32()
         self.house = House()
         for i in range(rooms_count):
@@ -339,7 +341,7 @@ class FiraSupervisor(Supervisor):
 
             if self.has_charger:
                 self.emitter.send(str(self.robot_instance.get_charge()).encode('utf-8'))
-            else:
+            elif self.send_room_data:
                 self.emitter.send(json.dumps({
                     "current_room": inside_room.name,
                     "cleaning_percentage": self.house.rooms_cleaning_percentages()

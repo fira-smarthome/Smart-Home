@@ -85,7 +85,7 @@ class RobotManager:
         try:
             self.robot_node.getField('wheel_mult').setSFFloat(vel)
         except:
-            print('exception')
+            print()
 
     def _is_stopped(self) -> bool:
         vel = self.robot_node.getVelocity()
@@ -123,7 +123,6 @@ class RobotManager:
             self._score = 0
 
     def set_score(self, message: str, score: float, supervisor) -> None:
-        print("Score: ", score)
         # if point > 0.0:
         #     self.history.enqueue(f"{message} +{point}", supervisor)
         # elif point < 0.0:

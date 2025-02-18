@@ -8,6 +8,18 @@ IMPORTABLE EXTERNPROTO "../protos/U19.proto"
 IMPORTABLE EXTERNPROTO "../protos/PaintedPlane.proto"
 EXTERNPROTO "../protos/ActualWall.proto"
 EXTERNPROTO "../protos/SmartHomeInfo.proto"
+EXTERNPROTO "../protos/Fridge.proto"
+EXTERNPROTO "../protos/WashingMachine.proto"
+EXTERNPROTO "../protos/Sofa.proto"
+EXTERNPROTO "../protos/Bed.proto"
+EXTERNPROTO "../protos/Television.proto"
+EXTERNPROTO "../protos/RoundTable.proto"
+EXTERNPROTO "../protos/Radiator.proto"
+EXTERNPROTO "../protos/BunchOfSunFlowers.proto"
+EXTERNPROTO "../protos/Oven.proto"
+EXTERNPROTO "../protos/Toilet.proto"
+EXTERNPROTO "../protos/Bathtube.proto"
+EXTERNPROTO "../protos/BathroomSink.proto"
 
 WorldInfo {
   coordinateSystem "NUE"
@@ -65,7 +77,7 @@ DEF Walls Group {
     DEF Main_Walls Group {
       children [
         ActualWall {
-          translation -1.28 0.125 -1.28
+          translation -1.28356 0.125 -1.28712
           name "Wall 1"
           size 0.03 0.25 2.56
         }
@@ -91,8 +103,15 @@ DEF Walls Group {
   ]
 }
 DEF Info SmartHomeInfo {
-    verbose FALSE
-    charging_points_count 0
+  verbose FALSE
+  charging_points_count 0
+  relocation_points_count 4
+  relocation_points [
+    -0.66 1
+    0 0
+    0.8 0.8
+    0.6 -1
+  ]
 }
 DEF MAINSUPERVISOR Robot {
   children [
@@ -107,4 +126,183 @@ DEF MAINSUPERVISOR Robot {
   customData "480"
   supervisor TRUE
   window "SmarthomeWindow"
+}
+DEF Furnitures Group {
+  children [
+    BathroomSink {
+      translation 0.83 0.1 -0.0799992
+      rotation 0.577349935856137 0.577349935856137 0.5773509358560258 -2.094395307179586
+    }
+    BathroomSink {
+      translation -0.82 0.1 0.330001
+      rotation 0.577349935856137 0.577349935856137 0.5773509358560258 -2.094395307179586
+      name "sink(1)"
+    }
+    Bathtube {
+      translation 1.21 -4.07847e-08 0.04
+      rotation 1 0 0 -1.5707953071795862
+    }
+    Toilet {
+      translation 0.96 1.41866e-07 0.24
+      rotation 0.5773502691896258 -0.5773502691896258 -0.5773502691896258 -2.094395307179586
+    }
+    Oven {
+      hidden position_0_0 4.854483009803756e-13
+      translation -0.36 -9.54105e-07 0.359999
+      rotation 0.5773486025227593 0.577351602520694 0.5773506025213824 -2.094395307179586
+    }
+    Oven {
+      hidden position_0_0 4.854483010541554e-13
+      translation -0.42 -1.08558e-06 0.359999
+      rotation 0.5773486025227593 0.577351602520694 0.5773506025213824 -2.094395307179586
+      name "oven(1)"
+    }
+    Oven {
+      hidden position_0_0 4.854483006115333e-13
+      translation -0.48 -1.21704e-06 0.359999
+      rotation 0.5773486025227593 0.577351602520694 0.5773506025213824 -2.094395307179586
+      name "oven(2)"
+    }
+    BunchOfSunFlowers {
+      translation 0.26 6.52546e-07 -0.64
+      rotation 1 0 0 -1.5707953071795862
+    }
+    BunchOfSunFlowers {
+      translation 0.26 7.13722e-07 -0.7
+      rotation 1 0 0 -1.5707953071795862
+      name "bunch of sunflowers(1)"
+    }
+    BunchOfSunFlowers {
+      translation 1.23 -3.56862e-07 0.35
+      rotation 1 0 0 -1.5707953071795862
+      name "bunch of sunflowers(3)"
+    }
+    BunchOfSunFlowers {
+      translation -0.81 -2.65098e-07 0.26
+      rotation 1 0 0 -1.5707953071795862
+      name "bunch of sunflowers(6)"
+    }
+    BunchOfSunFlowers {
+      translation -0.73 -2.65098e-07 0.26
+      rotation 1 0 0 -1.5707953071795862
+      name "bunch of sunflowers(7)"
+    }
+    BunchOfSunFlowers {
+      translation -0.66 -2.65098e-07 0.26
+      rotation 1 0 0 -1.5707953071795862
+      name "bunch of sunflowers(8)"
+    }
+    BunchOfSunFlowers {
+      translation 1.17 -3.56862e-07 0.35
+      rotation 1 0 0 -1.5707953071795862
+      name "bunch of sunflowers(4)"
+    }
+    BunchOfSunFlowers {
+      translation 1.1 -3.56862e-07 0.35
+      rotation 1 0 0 -1.5707953071795862
+      name "bunch of sunflowers(5)"
+    }
+    ActualWall {
+      translation 1.28 0.125 -1.28
+      name "Wall 2(2)"
+      size 0.03 0.25 2.56
+    }
+    ActualWall {
+      translation 1.28 0.125 -1.28
+      name "Wall 2(1)"
+      size 0.03 0.25 2.56
+    }
+    BunchOfSunFlowers {
+      translation 0.26 5.9137e-07 -0.58
+      rotation 1 0 0 -1.5707953071795862
+      name "bunch of sunflowers(2)"
+    }
+    Radiator {
+      translation 0.72 0.0500001 -1.26
+      rotation 0.577349935856137 0.5773509358560258 0.577349935856137 -2.094395307179586
+    }
+    Radiator {
+      translation 0.82 0.0500001 -1.26
+      rotation 0.577349935856137 0.5773509358560258 0.577349935856137 -2.094395307179586
+      name "radiator(1)"
+    }
+    RoundTable {
+      translation -0.68 6.95578e-09 -0.67
+      rotation 0.5773509358560258 0.577349935856137 0.577349935856137 -2.094395307179586
+    }
+    RoundTable {
+      translation -0.44 8.20874e-07 0.74
+      rotation 0.5773509358560258 0.577349935856137 0.577349935856137 -2.094395307179586
+      name "round table(1)"
+    }
+    Television {
+      translation -1.26 0.14 -0.68
+      rotation 1 0 0 -1.5707953071795862
+    }
+    Television {
+      translation 0.32 0.14 -0.58
+      rotation 1 0 0 -1.5707953071795862
+      name "television(2)"
+    }
+    Television {
+      translation 0.61 0.14 0.33
+      rotation 0.577349935856137 0.577349935856137 0.5773509358560258 -2.094395307179586
+      name "television(1)"
+    }
+    Bed {
+      translation 1.14 -3.11797e-06 -0.389999
+      rotation 6.072868120756204e-07 0.7071067811864172 0.7071067811864172 3.14159
+    }
+    Bed {
+      translation 0.41 -1.39505e-06 1.14
+      rotation 0.577349935856137 -0.5773509358560258 -0.577349935856137 -2.094395307179586
+      name "bed(2)"
+    }
+    Bed {
+      translation 0.88 -8.66794e-07 1.14
+      rotation 0.577349935856137 -0.5773509358560258 -0.577349935856137 -2.094395307179586
+      name "bed(3)"
+    }
+    Bed {
+      translation 1.14 -3.11797e-06 -0.849999
+      rotation 6.072868120756204e-07 0.7071067811864172 0.7071067811864172 3.14159
+      name "bed(1)"
+    }
+    Sofa {
+      translation -0.45 2.03771e-06 -1.19
+      rotation 0.5773509358554485 0.5773489358556708 0.5773509358554485 -2.094395307179586
+      name "sofa(4)"
+    }
+    Sofa {
+      translation -0.2 6.162e-07 -0.67
+      rotation 8.517997364111552e-07 0.7071067811862911 0.7071067811862911 3.14159
+    }
+    Sofa {
+      translation -0.92 1.36883e-06 -0.15
+      rotation 0.577349935856137 -0.5773509358560258 -0.577349935856137 -2.094395307179586
+      name "sofa(1)"
+    }
+    Sofa {
+      translation -0.45 1.95767e-06 -0.15
+      rotation 0.577349935856137 -0.5773509358560258 -0.577349935856137 -2.094395307179586
+      name "sofa(2)"
+    }
+    Sofa {
+      translation -0.93 3.216e-06 -1.19
+      rotation 0.5773509358554485 0.5773489358556708 0.5773509358554485 -2.094395307179586
+      name "sofa(3)"
+    }
+    WashingMachine {
+      translation -1.21 0.0899999 1.21
+      rotation 1 0 0 -1.5707953071795862
+    }
+    Fridge {
+      hidden position_0_0 -1.7862690085842066e-05
+      hidden position_0_1 -1.7865543804492033e-05
+      hidden rotation_1 0 0 -1 1.7862682686095388e-05
+      hidden rotation_2 0 0 -1 1.786554150487465e-05
+      translation -1.23 1.11301e-06 0.370001
+      rotation 0.5773509358560258 0.577349935856137 0.577349935856137 -2.094395307179586
+    }
+  ]
 }

@@ -53,6 +53,9 @@ class FiraSupervisor(Supervisor):
         self.ws = FiraWindowSender(self)
         self.ws.send("startup")
 
+        surface = self.getFromDef('GROUND')
+        surface.getField("textureUrl").setMFString(0, os.getcwd() + UNMODIFIED_TEXTURE_PATH)
+
         game_info = self.getFromDef('Info')
 
         self.verbose = game_info.getField('verbose').getSFBool()

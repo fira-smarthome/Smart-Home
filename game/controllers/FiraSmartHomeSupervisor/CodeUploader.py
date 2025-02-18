@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python3
 """Controller Uploader v0.1
 Modified by Ryo Unemoto
 
@@ -88,12 +88,7 @@ class SimpleHTTPRequestHandler(http.server.BaseHTTPRequestHandler):
             return False, "Content NOT begin with boundary"
         ##Clear Destination Directory
         path = self.translate_path(self.path)
-        for file in glob.glob(os.path.join(path, os.path.basename(path)) + '*'):
-            print(file)
-            try:
-                os.remove(file)
-            except:
-                return False, f"Please delete this file first: {file}"
+        os.remove(os.path.join(path, 'robotCode.py'))
 
         while remainbytes > 0:
             line = self.rfile.readline()

@@ -19,8 +19,6 @@ BackLeft = 0
 BackRight = 0
 Left = 0
 Right = 0
-CurrentRoom = ""
-Rooms = dict()
 
 # --------------------------------------------------------------#
 # INIT
@@ -84,7 +82,6 @@ def rad2deg(rad):
 def readSensorsPrimary():
     global Compass, Front, FrontLeft, Left, BackLeft, Back, BackRight, Right, FrontRight
     global US_Front, US_Left, US_Right
-    global CurrentRoom, Rooms
 
     Compass = (rad2deg(iuSensor.getRollPitchYaw()[2]) + 360) % 360
     Front = int(distanceSensor1.getValue() * 10 * 32)
@@ -98,15 +95,6 @@ def readSensorsPrimary():
     US_Front = Front
     US_Left = FrontLeft
     US_Right = FrontRight
-
-    if receiver.getQueueLength() > 0:
-        received_data = receiver.getString()
-        if len(received_data) > 0:
-            received_data = json.loads(received_data)
-            CurrentRoom = received_data["current_room"]
-            room_data = received_data["cleaning_percentage"]
-            Rooms = {i['room']: int(float(i["percentage"]) * 100) for i in room_data}
-        receiver.nextPacket()
 
 
 def debugPrimary():
@@ -124,8 +112,6 @@ def debugPrimary():
     cprint("                       Back: " + str(Back), "yellow")
     cprint("------------------- Compass -----------------", "yellow", )
     cprint("Compass: " + str("%.0f " % Compass), "yellow")
-    cprint("Current Room: " + CurrentRoom, "yellow")
-    cprint("Rooms: " + str.join(", ", map(lambda key: f'{key}: {Rooms[key]}', Rooms.keys())), "yellow")
 
 
 def move(left, right):

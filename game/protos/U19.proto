@@ -13,7 +13,6 @@ PROTO U19 [
     field SFVec3f            translation                  0 0 0                    # Is `Transform.translation`.
     field SFRotation         rotation                     0 1 0 0                  # Is `Transform.rotation`.
     field SFString           name                         "Vacuum"                 # Is `Solid.name`.
-    field SFString           team_name                    ""
     field SFInt32            emitter_channel              1
     field SFInt32            receiver_channel             1
     field SFString           controller                   ""
@@ -21,14 +20,6 @@ PROTO U19 [
     field SFString           customData                   ""
     hiddenField SFFloat      wheel_mult                   1.0
     hiddenField  SFFloat     max_velocity                 6.28
-    field SFFloat            camera_fieldOfView           0.84
-    field SFInt32            camera_width                 64
-    field SFInt32            camera_height                40
-    field SFBool             camera_antiAliasing          FALSE
-    field SFRotation         camera_rotation              1 0 0 0
-    field SFFloat            camera_noise                 0.0
-    field SFFloat            camera_motionBlur            0.0
-
 ]
 {
 Robot {
@@ -225,7 +216,7 @@ Robot {
                 }
                 PositionSensor {
                 name "wheel1 sensor"
-                resolution 0.00628  # (2 * pi) / 1000
+                resolution 0.01256  # (2 * pi) / 1000
                 }
             ]
             endPoint Solid {
@@ -363,7 +354,7 @@ Robot {
                 }
                 PositionSensor {
                 name "wheel2 sensor"
-                resolution 0.00628  # (2 * pi) / 1000
+                resolution 0.01256  # (2 * pi) / 1000
                 }
             ]
             endPoint Solid {

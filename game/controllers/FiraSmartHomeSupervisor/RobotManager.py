@@ -38,7 +38,7 @@ class RobotManager:
         self.robot_node = None
         self.history = RobotHistory()
 
-        self._score = 0
+        self._score = 0.0
         self._charge = 100.0
 
         self.name = ""
@@ -50,7 +50,7 @@ class RobotManager:
         self.message = []
         self.map_data = np.array([])
 
-        self.start_tile = None
+        # self.start_tile = None
 
         self.is_in_simulation = False
 
@@ -85,7 +85,7 @@ class RobotManager:
         try:
             self.robot_node.getField('wheel_mult').setSFFloat(vel)
         except:
-            print('exception')
+            print()
 
     def _is_stopped(self) -> bool:
         vel = self.robot_node.getVelocity()
@@ -112,8 +112,8 @@ class RobotManager:
         self.stopped = False
         self.stopped_time = None
 
-    def increase_score(self, message: str, score: int, supervisor, multiplier=1) -> None:
-        point = round(score * multiplier, 2)
+    def increase_score(self, message: str, score: float, supervisor, multiplier=1) -> None:
+        point = score * multiplier
         if point > 0.0:
             self.history.enqueue(f"{message} +{point}", supervisor)
         elif point < 0.0:
@@ -122,7 +122,16 @@ class RobotManager:
         if self._score < 0:
             self._score = 0
 
-    def get_score(self) -> int:
+    def set_score(self, message: str, score: float, supervisor) -> None:
+        # if point > 0.0:
+        #     self.history.enqueue(f"{message} +{point}", supervisor)
+        # elif point < 0.0:
+        #     self.history.enqueue(f"{message} {point}", supervisor)
+        self._score = score
+        if self._score < 0:
+            self._score = 0
+
+    def get_score(self) -> float:
         return self._score
 
     def increase_charge(self, charge: float) -> None:
@@ -143,21 +152,7 @@ class RobotManager:
         return self._charge
 
     def set_starting_orientation(self):
-        top = self.start_tile.tile_node.getField("topWall").getSFInt32()
-        right = self.start_tile.tile_node.getField("rightWall").getSFInt32()
-        bottom = self.start_tile.tile_node.getField("bottomWall").getSFInt32()
-        left = self.start_tile.tile_node.getField("leftWall").getSFInt32()
-
-        pi = 3.14
-        walls = [[top, 0], [right, -pi / 2], [bottom, pi], [left, pi / 2]]
-        direction = 0
-
-        for i in range(len(walls)):
-            if not walls[i][0]:
-                direction = walls[i][1]
-                break
-
-        self.rotation = [0, 1, 0, direction]
+        self.rotation = [0, 1, 0, 0]
 
     def update_elapsed_time(self, timeElapsed: int):
         self.time_elapsed = timeElapsed

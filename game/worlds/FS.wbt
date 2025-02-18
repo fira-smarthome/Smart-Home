@@ -103,10 +103,9 @@ DEF Walls Group {
   ]
 }
 DEF Info SmartHomeInfo {
-  charging_points [
-    0.7 -0.7
-    -1 0.15
-  ]
+  verbose FALSE
+  send_room_data FALSE
+  charging_points_count 0
   relocation_points_count 4
   relocation_points [
     -0.66 1
@@ -114,7 +113,6 @@ DEF Info SmartHomeInfo {
     0.8 0.8
     0.6 -1
   ]
-  verbose FALSE
 }
 DEF MAINSUPERVISOR Robot {
   children [
@@ -150,18 +148,18 @@ DEF Furnitures Group {
       rotation 0.5773502691896258 -0.5773502691896258 -0.5773502691896258 -2.094395307179586
     }
     Oven {
-      hidden position_0_0 6.9349756835489e-13
+      hidden position_0_0 5.547980567718804e-13
       translation -0.36 -9.54105e-07 0.359999
       rotation 0.5773486025227593 0.577351602520694 0.5773506025213824 -2.094395307179586
     }
     Oven {
-      hidden position_0_0 6.934975684286759e-13
+      hidden position_0_0 5.547980568456622e-13
       translation -0.42 -1.08558e-06 0.359999
       rotation 0.5773486025227593 0.577351602520694 0.5773506025213824 -2.094395307179586
       name "oven(1)"
     }
     Oven {
-      hidden position_0_0 6.934975679860429e-13
+      hidden position_0_0 5.547980564030365e-13
       translation -0.48 -1.21704e-06 0.359999
       rotation 0.5773486025227593 0.577351602520694 0.5773506025213824 -2.094395307179586
       name "oven(2)"
@@ -300,10 +298,10 @@ DEF Furnitures Group {
       rotation 1 0 0 -1.5707953071795862
     }
     Fridge {
-      hidden position_0_0 -2.456128143691831e-05
-      hidden position_0_1 -2.4565205106181428e-05
-      hidden rotation_1 0 0 -0.9999999999999999 2.456127260014075e-05
-      hidden rotation_2 0 0 -1 2.4565213913864547e-05
+      hidden position_0_0 -2.009554888485173e-05
+      hidden position_0_1 -2.009875925097471e-05
+      hidden rotation_1 0 0 -1 2.009554046607636e-05
+      hidden rotation_2 0 0 -1 2.0098766645567857e-05
       translation -1.23 1.11301e-06 0.370001
       rotation 0.5773509358560258 0.577349935856137 0.577349935856137 -2.094395307179586
     }

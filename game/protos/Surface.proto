@@ -1,0 +1,37 @@
+#VRML_SIM R2023a utf8
+PROTO Surface [
+  field SFVec2f    size          10 10              # Size of the plane (width, height)
+  field SFVec3f    box_size      10 10 0.1           # Size of the box (width, height, thickness)
+  field MFString   textureUrl    ["textures/surface_start.png"]  # Initial texture (file path or Base64)
+  field SFVec3f    position      0 0 0              # Position of the surface
+  field SFRotation rotation      0 1 0 0            # Rotation of the surface
+] {
+  Transform {
+    translation IS position
+    rotation IS rotation
+    children [
+      Solid {  # Add physics to the surface
+        name "Surface"
+        children [
+          Shape {
+            appearance Appearance {
+              material Material {
+                diffuseColor 1 1 1
+              }
+              texture ImageTexture {
+                url IS textureUrl
+              }
+            }
+            geometry Plane {
+              size IS size  # Define the size of the plane
+            }
+          }
+        ]
+        # Use a Box for collision, not a Plane for bounding volume
+        boundingObject Box {
+          size IS box_size  # Size of the box (for collisions)
+        }
+      }
+    ]
+  }
+}

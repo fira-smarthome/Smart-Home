@@ -28,6 +28,10 @@
     ```bash
     pip install -r requirements.txt
     ```
+   یا
+   ```bash
+   pip install numpy pillow termcolor
+   ```
     **ممکن است نیاز به نصب بسته‌های اضافی نیز داشته باشید.**
 
 4. **تنظیمات اضافی:**

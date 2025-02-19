@@ -11,13 +11,13 @@
 
 ## پیش‌نیازها
 - [Webots R2023a](https://github.com/cyberbotics/webots/releases/download/R2023a/webots-R2023a_setup.exe)
-- [Python 3.9.x یا 3.10.x](https://www.python.org/downloads/)
+- [Python 3.9.x و بالاتر](https://www.python.org/downloads/)
 
 ## نصب
 
 1. **مخزن را کلون کنید:**
     ```bash
-    git clone https://github.com/cnazk/Smart-Home.git
+    git clone https://github.com/fira-smarthome/Smart-Home
     ```
 
 2. **نصب Webots:**
